@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Page</title>
+	<script type="text/javascript" src="jQuery.min.js"></script>
+	<link rel="shortcut icon" type="image/x-icon" href="logo1.jpg" />
+	<!-- <link rel="stylesheet" type="text/css" href="loginpage.css"> -->
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+	<style type="text/css">
+		* {
+			box-sizing: border-box;
+		}
+
+		body{
+			padding: 0;
+			margin: 0;
+			z-index:-50;
+			background-repeat: no-repeat;
+			background: url(https://images.pexels.com/photos/583846/pexels-photo-583846.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500) no-repeat center center fixed; 
+  			-webkit-background-size: cover;
+  			-moz-background-size: cover;
+  			-o-background-size: cover;
+  			background-size: cover;
+			background-color: grey;
+			color: #fff;
+			font-family: 'Ubuntu', sans-serif;	
+			font-size: 130%;	
+			margin-top: 5%;	
+		}
+
+		.bg {
+  			animation:slide 3s ease-in-out infinite alternate;
+  			background-image: linear-gradient(-120deg, #6a89cc 50%, #4a69bd 50%);
+  			bottom:0;
+  			left:-50%;
+  			opacity:.5;
+  			position:fixed;
+  			right:-50%;
+  			top:0;
+  			z-index:-2;
+		}
+
+		.bg2 {
+			animation-direction:alternate-reverse;
+			animation-duration:7s;
+		}
+
+		.bg3 {
+		  	animation-duration:5s;
+  			background-image: linear-gradient(-10deg, #6a89cc 50%, #4a69bd 50%);
+		}
+
+		#profile{
+			height: 120px;
+			width: 120px;
+			-webkit-border-radius: 100px;
+  			-moz-border-radius: 100px;
+			border-radius: 100px;
+			margin-bottom: -100px;
+			background-position:top center;
+			vertical-align: middle;
+			z-index: 2;
+			position: relative;
+			left: 46%;
+			padding: 5px;
+			top: 10%;
+		}
+
+		@keyframes slide {
+  			0% {
+    			transform:translateX(-25%);
+  			}
+  			100% {
+    			transform:translateX(25%);
+  			}
+		}
+
+		#submitButton {
+			background-image: linear-gradient(to right, #89F7FE 0%, #66A6FF 51%, #085078 100%);
+			transition-timing-function: ease-in;
+			transition-duration: 10s;
+			transform-style: 
+		}
+		
+		#submitButton:hover{
+			background-image: linear-gradient(to left, #89F7FE 0%, #66A6FF 51%, #085078 100%);
+		}
+
+		#wrapper {
+			width: 530px;
+			height: 420px;
+  			-webkit-border-radius: 50px;
+  			-moz-border-radius: 50px;
+  			border-radius: 50px;
+  			background-color: #130f40;
+  			opacity: 80%;
+			margin: 300px 0px 0px 900px;
+			display: block;
+			padding: 64px;
+			background-size: cover;
+			position: relative;
+			z-index: 1;
+			box-shadow: 0px 15px 20px 0px rgba(37, 43, 94, 0.76);
+		}
+
+		input{
+			width: 400px;
+			height: 40px;
+			padding-left: 15px;
+			background: rgb(84, 85, 92);
+			outline: none;
+			color: #fff;
+			border: none;
+			border-radius: 36px;
+			font-family: 'Ubuntu', sans-serif;
+			font-size: 14px;
+			transition: background 0.5s ease-in-out;	
+		}
+
+		input:focus {
+			background: grey;
+			font-size: 17px;
+		}			
+
+		::placeholder {
+  			color: white;
+  			opacity: 0.5; 
+		}			
+
+		label{
+			position: relative;
+			top: 10px;
+			width: 200px;
+			float: left;
+		}
+
+		.form-element{
+			margin-bottom: 10px;
+		}
+		#submitButton{
+			width: 100px;
+			/*margin-left: 200px;*/
+			padding-right: 10px; 
+			float: left;
+		}
+	
+
+		.split {
+		  height: 100%;
+		  width: 40%;
+		  position: fixed;
+		  z-index: 1;
+		  top: 0;
+		  overflow-x: hidden;
+		  padding-top: 20px;
+		}
+.left {
+  left: -20;
+  right: 50px;
+  top: 10%;
+  width: 100%;
+  /*overflow: scroll;*/
+  height: 100vh;
+  
+  /*background-color: #111;*/
+}
+
+/* Control the right side */
+.right {
+  right: 0;
+  /*background-color: red;*/
+}
+/* If you want the content centered horizontally and vertically */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-80%, -80%);
+  text-align: left;
+}
+
+/* Style the image inside the centered container, if needed */
+
+
+	</style>	
+</head>
+
+<body>
+	
+	<div class="bg"></div>
+	<div class="bg bg2"></div>
+	<div class="bg bg3"></div>
+
+
+
+	<div class="split left">
+  <div class="centered">
+    <h2>hate-roberta-hasoc-hindi</h2>
+    <p>Sentiment analysis is the most basic NLP task to determine the polarity of text data. There has been a significant amount of work in the area of multilingual text as well. Still hate and offensive speech detection faces a challenge due to inadequate availability of data, especially for Indian languages like Hindi and Marathi. As the sentence structure is much different than English and different combination of same words can make different meaning. Therefore working on these languages is more challenging than English language. In this work, we consider hate and offensive speech detection in Hindi and Marathi texts. The problem is formulated as a text classification task using the state of the art deep learning approaches. We explore and evaluate different deep learning architectures on publicly available datasets and compare the evaluation results</p>
+ 	<button class="btn " type="button" onclick="location.href='{% url 'tweets_pool' %}'" style="width: 8vw ;font-size: 15px;height: 5vh; margin-top: 1vh ; background-color: #3a8196; color: white;">VIEW</button>
+
+  </div>
+</div>
+
+<div class="split right">
+  <div class="centered">
+    <div id="wrapper">
+	    <form method="post">
+		{% csrf_token %}
+		<div class="form-element">
+
+			<input type="text" name="fname" id="fname" placeholder="Your sentence here..." autofocus>
+
+		</div>
+			<div>
+				<input type="submit" id="submitButton" value="Compute" style="background-color: #2874F0;color: white">
+			</div>
+			<br>
+		</form>
+	<div><br><br>
+		<label for="file">Not:</label>
+		<progress id="file" value="92" max="100"> 92% </progress> 92
+
+		<label for="file">Hate:</label>
+		<progress id="file" value="2" max="100"> 2% </progress> 2
+
+		<label for="file">Offn:</label>
+		<progress id="file" value="3" max="100"> 3% </progress> 3
+
+		<label for="file">Prfn:</label>
+		<progress id="file" value="5" max="100"> 1% </progress> 1
+	</div>
+
+
+	</div>
+	
+  </div>
+</div>	
+
+		
+<!-- 			
+<script type="text/javascript">
+
+	function isEmail(email) {
+ 
+ 	 var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+ 	 return regex.test(email);
+	}	
+
+	$("#submitButton").click(function(){
+		var errorMessage = "";
+		var fieldMissing = ""; 
+
+		if ($("#fname").val() == "") {
+			fieldMissing += "First Name,\n";
+		}
+
+		if ($("#lname").val() == "") {
+			fieldMissing += "Last Name,\n";
+		}
+
+		if ($("#email").val() == "") {
+			fieldMissing += "Email,\n";
+		}
+		
+		if ($("#phone").val() == "") {
+			fieldMissing += "Contact No.,\n";
+		}
+
+		if ($("#birthday").val() == "") {
+			fieldMissing += "Date Of Birth,\n";
+		}
+
+		if ($("#password").val() == "") {
+			fieldMissing += "Password,\n";
+		}
+
+		if ($("#passwordconfirm").val() == "") {
+			fieldMissing += "Confirm Password.\n";
+		}
+
+		if(fieldMissing != ""){
+			alert(errorMessage += "The following field(s) are missing:\n" + fieldMissing + "\n");
+		}
+
+		if (isEmail($("#email").val()) == false){
+			alert(errorMessage += "Your email address is not valid !\n");
+		}
+
+		if ($.isNumeric($("#phone").val()) == false){
+			alert(errorMessage += "Your Contact Number is not valid !\n") 
+		}
+
+		if ($("#password").val() != $("#passwordconfirm").val()) {
+			alert(errorMessage += "Your passwords don't match ! \n")
+		}
+
+		if (errorMessage != "") {
+			$("#errorMessage").html(errorMessage);
+		}
+
+		else{
+			$("#successMessage").show();
+			$("#errorMessage").hide();
+		}
+		document.getElementById("submitButton").onclick = function(){
+  			alert("Logged In Successfully!");
+  		}
+	});
+		
+</script> -->
+
+</body>
+</html>

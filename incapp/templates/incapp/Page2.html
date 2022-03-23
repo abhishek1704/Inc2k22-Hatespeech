@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Page</title>
+	<script type="text/javascript" src="jQuery.min.js"></script>
+	<link rel="shortcut icon" type="image/x-icon" href="logo1.jpg" />
+	<!-- <link rel="stylesheet" type="text/css" href="loginpage.css"> -->
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+	<style type="text/css">
+		* {
+			box-sizing: border-box;
+		}
+
+		body{
+			padding: 0;
+			margin: 0;
+			z-index:-50;
+			background-repeat: no-repeat;
+			background: url(https://images.pexels.com/photos/583846/pexels-photo-583846.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500) no-repeat center center fixed; 
+  			-webkit-background-size: cover;
+  			-moz-background-size: cover;
+  			-o-background-size: cover;
+  			background-size: cover;
+			background-color: grey;
+			color: #fff;
+			font-family: 'Ubuntu', sans-serif;	
+			font-size: 130%;	
+			margin-top: 5%;	
+		}
+		.forclass {
+				display: flex;
+				justify-content: space-evenly;
+				flex-wrap: wrap;
+
+
+		}
+
+		.bg {
+  			animation:slide 3s ease-in-out infinite alternate;
+  			background-image: linear-gradient(-120deg, #6a89cc 50%, #4a69bd 50%);
+  			bottom:0;
+  			left:-50%;
+  			opacity:.5;
+  			position:fixed;
+  			right:-50%;
+  			top:0;
+  			z-index:-2;
+		}
+
+		.bg2 {
+			animation-direction:alternate-reverse;
+			animation-duration:7s;
+		}
+
+		.bg3 {
+		  	animation-duration:5s;
+  			background-image: linear-gradient(-10deg, #6a89cc 50%, #4a69bd 50%);
+		}
+
+		#profile{
+			height: 120px;
+			width: 120px;
+			-webkit-border-radius: 100px;
+  			-moz-border-radius: 100px;
+			border-radius: 100px;
+			margin-bottom: -100px;
+			background-position:top center;
+			vertical-align: middle;
+			z-index: 2;
+			position: relative;
+			left: 46%;
+			padding: 5px;
+			top: 10%;
+		}
+
+		@keyframes slide {
+  			0% {
+    			transform:translateX(-25%);
+  			}
+  			100% {
+    			transform:translateX(25%);
+  			}
+		}
+
+		#submitButton {
+			background-image: linear-gradient(to right, #89F7FE 0%, #66A6FF 51%, #085078 100%);
+			transition-timing-function: ease-in;
+			transition-duration: 10s;
+			transform-style: 
+		}
+		
+		#submitButton:hover{
+			background-image: linear-gradient(to left, #89F7FE 0%, #66A6FF 51%, #085078 100%);
+		}
+
+		#wrapper {
+			width: 450px;
+			height: 400px;
+  			-webkit-border-radius: 50px;
+  			-moz-border-radius: 50px;
+  			border-radius: 50px;
+  			background-color: #130f40;
+  			opacity: 80%;
+			margin: 5px 5px 5px 5px;
+			display: block;
+			padding: 64px;
+			background-size: cover;
+			position: relative;
+			z-index: 1;
+			box-shadow: 0px 15px 20px 0px rgba(37, 43, 94, 0.76);
+		}
+
+		input{
+			width: 350px;
+			height: 40px;
+			padding-left: 15px;
+			background: rgb(84, 85, 92);
+			outline: none;
+			color: #fff;
+			border: none;
+			border-radius: 36px;
+			font-family: 'Ubuntu', sans-serif;
+			font-size: 14px;
+			transition: background 0.5s ease-in-out;	
+		}
+
+		input:focus {
+			background: grey;
+			font-size: 17px;
+		}			
+
+		::placeholder {
+  			color: white;
+  			opacity: 0.5; 
+		}			
+
+		label{
+			position: relative;
+			top: 10px;
+			width: 200px;
+			float: left;
+		}
+
+		.form-element{
+			margin-bottom: 10px;
+		}
+		#submitButton{
+			width: 100px;
+			/*margin-left: 200px;*/
+			padding-right: 10px; 
+			float: left;
+		}
+	
+
+
+/* Style the image inside the centered container, if needed */
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  /*background-color: #2196F3;*/
+  padding: 10px;
+}
+.grid-item {
+  /*background-color: rgba(255, 255, 255, 0.8);*/
+  /*border: 1px solid rgba(0, 0, 0, 0.8);*/
+  /*padding: 20px;*/
+  /*font-size: 30px;*/
+  text-align: center;
+}
+
+
+	</style>	
+</head>
+
+<body>
+	
+	<div class="bg"></div>
+	<div class="bg bg2"></div>
+	<div class="bg bg3"></div>
+
+	 
+	<h2 style="margin-left:30px ">Results:</h2>
+	<div class="forclass">
+	{% for tweet in all_tweets %}
+
+	<div class="grid-container">
+  <div class="grid-item">
+  	<div id="wrapper">
+	
+		<div class="form-element">	
+		
+			<p>{{ tweet.sent_text }}</p>
+
+		</div>
+		
+	<div><br>
+
+		<label for="file">Hate:</label>
+		<progress id="file" value="0.5" max="1"></progress> {{ tweet.hate_label }}
+
+		<label for="file">Offn:</label>
+		<progress id="file" value=tweet.hate_label max="1"></progress> {{ tweet.offn_label }}
+
+		<label for="file">Prfn:</label>
+		<progress id="file" value={{ tweet.hate_label }} max="1"></progress> {{ tweet.prfn_label }}
+
+		<label for="file">Not:</label>
+		<progress id="file" value={{ tweet.hate_label }} max="1"></progress> {{ tweet.not_label }}
+	</div>
+
+
+	</div>
+  </div>
+	</div>
+{% endfor %}
+		</divclas>
+</body>
+</html>
