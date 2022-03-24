@@ -97,7 +97,7 @@
 
 		#wrapper {
 			width: 450px;
-			height: 400px;
+			height: 100%;
   			-webkit-border-radius: 50px;
   			-moz-border-radius: 50px;
   			border-radius: 50px;
@@ -186,7 +186,7 @@
 	{% for tweet in all_tweets %}
 
 	<div class="grid-container">
-  <div class="grid-item">
+  	<div class="grid-item">
   	<div id="wrapper">
 	
 		<div class="form-element">	
@@ -195,19 +195,19 @@
 
 		</div>
 		
-	<div><br>
+	<div><br><br>
 
 		<label for="file">Hate:</label>
-		<progress id="file" value="0.5" max="1"></progress> {{ tweet.hate_label }}
+		<progress id="file2" value="0.6" max="1"></progress> {{ tweet.hate_label }}
 
 		<label for="file">Offn:</label>
-		<progress id="file" value=tweet.hate_label max="1"></progress> {{ tweet.offn_label }}
+		<progress id="file3" value="0.3" max="1"></progress> {{ tweet.offn_label }}
 
 		<label for="file">Prfn:</label>
-		<progress id="file" value={{ tweet.hate_label }} max="1"></progress> {{ tweet.prfn_label }}
+		<progress id="file" value="0.5" max="1"></progress> {{ tweet.prfn_label }}
 
 		<label for="file">Not:</label>
-		<progress id="file" value={{ tweet.hate_label }} max="1"></progress> {{ tweet.not_label }}
+		<progress id="file1" value="0.5" max="1"></progress> {{ tweet.not_label }}
 	</div>
 
 
@@ -215,6 +215,14 @@
   </div>
 	</div>
 {% endfor %}
-		</divclas>
+		</div>
+<script>
+	window.onload = function() {
+    	document.getElementById('file2').value = tweet.hate_label
+    	document.getElementById('file3').value = tweet.offn_label
+    	document.getElementById('file').value = tweet.prfn_label
+    	document.getElementById('file1').value = tweet.not_label
+};
+</script>
 </body>
 </html>

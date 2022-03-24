@@ -199,7 +199,7 @@
   <div class="centered">
     <h2>hate-roberta-hasoc-hindi</h2>
     <p>Sentiment analysis is the most basic NLP task to determine the polarity of text data. There has been a significant amount of work in the area of multilingual text as well. Still hate and offensive speech detection faces a challenge due to inadequate availability of data, especially for Indian languages like Hindi and Marathi. As the sentence structure is much different than English and different combination of same words can make different meaning. Therefore working on these languages is more challenging than English language. In this work, we consider hate and offensive speech detection in Hindi and Marathi texts. The problem is formulated as a text classification task using the state of the art deep learning approaches. We explore and evaluate different deep learning architectures on publicly available datasets and compare the evaluation results</p>
- 	<button class="btn " type="button" onclick="location.href='{% url 'tweets_pool' %}'" style="width: 8vw ;font-size: 15px;height: 5vh; margin-top: 1vh ; background-color: #3a8196; color: white;">VIEW</button>
+ 	<button onclick="location.href='{% url 'tweets_pool' %}'" style="background-color: #2874F0;color: white">VIEW</button>
 
   </div>
 </div>
@@ -207,7 +207,7 @@
 <div class="split right">
   <div class="centered">
     <div id="wrapper">
-	    <form method="post">
+<!--	    <form method="post">-->
 		{% csrf_token %}
 		<div class="form-element">
 
@@ -218,19 +218,20 @@
 				<input type="submit" id="submitButton" value="Compute" style="background-color: #2874F0;color: white">
 			</div>
 			<br>
-		</form>
+<!--		</form>-->
 	<div><br><br>
-		<label for="file">Not:</label>
-		<progress id="file" value="92" max="100"> 92% </progress> 92
-
 		<label for="file">Hate:</label>
-		<progress id="file" value="2" max="100"> 2% </progress> 2
+		<progress id="file2" value="" max="1">  </progress><span id="s2" style="margin-left:10px"></span>
 
 		<label for="file">Offn:</label>
-		<progress id="file" value="3" max="100"> 3% </progress> 3
+		<progress id="file3" value="" max="1">  </progress><span id="s3" style="margin-left:10px"></span>
 
 		<label for="file">Prfn:</label>
-		<progress id="file" value="5" max="100"> 1% </progress> 1
+		<progress id="file" value="" max="1"> </progress><span id="s" style="margin-left:10px"></span>
+
+		<label for="file">Not:</label>
+		<progress id="file1" value="" max="1">  </progress><span id="s1" style="margin-left:10px"></span>
+
 	</div>
 
 
@@ -309,8 +310,34 @@
   			alert("Logged In Successfully!");
   		}
 	});
-		
 </script> -->
-
+<script>
+	$('document').ready(function(){
+            $('#submitButton').click(function(){
+                $.ajax({
+                    url : '{% url 'compute_results' %}',
+                    method: "POST",
+                    dataType : "json",
+                    data : { 'csrfmiddlewaretoken' : $('input[name="csrfmiddlewaretoken"]').val(),
+                             'sent' : $('#fname').val(),
+                            },
+                    success : function (data) {
+                       var hate = data['hate']
+                       var not = data['not']
+                       document.getElementById('file1').value = data['not']
+                       document.getElementById('s1').textContent = data['not']
+                       document.getElementById('file2').value = data['hate']
+                       document.getElementById('s2').textContent = data['hate']
+                       document.getElementById('file3').value = data['offn']
+                       document.getElementById('s3').textContent = data['offn']
+                       document.getElementById('file').value = data['prfn']
+					   document.getElementById('s').textContent = data['prfn']
+                       console.log(hate)
+                       console.log(not)
+                    }
+                });
+            });
+        });
+</script>
 </body>
 </html>
